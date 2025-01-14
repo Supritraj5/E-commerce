@@ -11,8 +11,9 @@ import com.app.shopping.data.local.entities.ProductEntity
 fun CartListing(
     modifier: Modifier = Modifier,
     cartProducts: List<CartEntity>,
-    onAddProductToCart: (ProductEntity) -> Unit,
-    onDeleteCartData: (CartEntity) -> Unit
+    onDeleteCartData: (CartEntity) -> Unit,
+    onIncrease: (CartEntity) -> Unit,
+    onDecrease: (CartEntity) -> Unit
 ) {
     LazyColumn(
         modifier = modifier
@@ -20,6 +21,10 @@ fun CartListing(
         items(cartProducts) { product ->
             CartItem(data = product, onDeleteItem = {
                 onDeleteCartData(product)
+            }, onDecrease = {
+                onDecrease(product)
+            }, onIncrease = {
+                onIncrease(product)
             })
         }
     }

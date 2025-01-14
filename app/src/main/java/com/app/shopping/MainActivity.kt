@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.app.shopping.core.Navigation
+import com.app.shopping.navigation.Navigation
 import com.app.shopping.ui.theme.EcommerceTheme
 import dagger.hilt.android.AndroidEntryPoint
 

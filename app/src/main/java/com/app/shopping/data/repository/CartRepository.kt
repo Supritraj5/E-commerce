@@ -9,24 +9,21 @@ class CartRepository @Inject constructor(
     private val cartDao: CartDAO
 ) {
 
-    fun getCartItems(): LiveData<List<CartEntity>> = cartDao.getCartItems()
+    fun getCartItems(): LiveData<List<CartEntity>> = cartDao.getCartItems() //get all the cart items
 
     suspend fun addToCart(cartItem: CartEntity) {
-        cartDao.addToCart(cartItem)
-        getCartItems().observeForever { cartItems ->
-            println("Updated Cart Items Count: ${cartItems.size}")
-        }
+        cartDao.addToCart(cartItem) //add item to cart
     }
 
     suspend fun updateCartItem(cartItem: CartEntity) {
-        cartDao.updateCartItem(cartItem)
+        cartDao.updateCartItem(cartItem) //update call
     }
 
     suspend fun deleteCartItem(cartItem: CartEntity) {
-        cartDao.deleteCartItem(cartItem)
+        cartDao.deleteCartItem(cartItem) //delete cart item
     }
 
     suspend fun clearCart() {
-        cartDao.clearCart()
+        cartDao.clearCart() //not required for now
     }
 }
