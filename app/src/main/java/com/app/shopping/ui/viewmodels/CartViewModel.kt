@@ -37,7 +37,6 @@ class CartViewModel @Inject constructor(
         }
     }
 
-    val cartItems: LiveData<List<CartEntity>> = repository.getCartItems()
 
     fun updateCartItem(cartItem: CartEntity, cartFunction: CartFunction) {
         viewModelScope.launch {

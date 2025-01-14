@@ -40,6 +40,7 @@ class ProductViewModel @Inject constructor(
     }
 
     fun getProductsFromDb() {
+        //Not in requirement but since i wrote the repo call that's why i wrote this too
         viewModelScope.launch {
             _uiState.value = UiState.Loading
             try {

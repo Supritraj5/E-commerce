@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
+//API response
 class ProductResponse : ArrayList<ProductResponse.ProductResponseItem>(){
     @Parcelize
     data class ProductResponseItem(
