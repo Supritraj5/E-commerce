@@ -1,4 +1,4 @@
-package com.app.shopping.ui.views
+package com.app.shopping.ui.views.home
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items

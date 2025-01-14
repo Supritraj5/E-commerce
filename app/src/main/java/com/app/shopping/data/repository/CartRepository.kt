@@ -13,6 +13,9 @@ class CartRepository @Inject constructor(
 
     suspend fun addToCart(cartItem: CartEntity) {
         cartDao.addToCart(cartItem)
+        getCartItems().observeForever { cartItems ->
+            println("Updated Cart Items Count: ${cartItems.size}")
+        }
     }
 
     suspend fun updateCartItem(cartItem: CartEntity) {

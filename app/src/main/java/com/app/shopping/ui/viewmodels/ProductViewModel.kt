@@ -26,7 +26,7 @@ class ProductViewModel @Inject constructor(
         fetchProductsFromApi()
     }
 
-    fun fetchProductsFromApi() {
+    private fun fetchProductsFromApi() {
         viewModelScope.launch {
             _uiState.value = UiState.Loading
             try {
@@ -51,7 +51,9 @@ class ProductViewModel @Inject constructor(
         }
     }
 
-    suspend fun addProductToCart(product: ProductEntity){
-        cartRepository.addToCart(cartItem = product.toCartEntity())
+    fun addProductToCart(product: ProductEntity) {
+        viewModelScope.launch {
+            cartRepository.addToCart(cartItem = product.toCartEntity())
+        }
     }
 }

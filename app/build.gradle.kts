@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
     id("kotlin-parcelize")
+    id("org.jetbrains.kotlin.plugin.serialization")
     alias(libs.plugins.hilt.android)
 }
 
@@ -76,4 +77,11 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    implementation (libs.androidx.navigation.compose)
+
+    implementation(libs.kotlinx.serialization.core)
+    implementation(libs.kotlinx.serialization.json)
+
+    implementation(libs.androidx.hilt.navigation.compose)
 }

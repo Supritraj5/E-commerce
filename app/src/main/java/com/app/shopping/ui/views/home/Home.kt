@@ -1,5 +1,6 @@
-package com.app.shopping.ui.views
+package com.app.shopping.ui.views.home
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,36 +16,41 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.ui.platform.LocalContext
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import com.app.shopping.core.RouteCart
 import com.app.shopping.data.local.entities.ProductEntity
 import com.app.shopping.ui.viewmodels.ProductViewModel
+import com.app.shopping.ui.views.UiState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Home(modifier: Modifier = Modifier) {
-
-    val viewModel: ProductViewModel = viewModel()
+fun Home(modifier: Modifier = Modifier, navController: NavHostController) {
+    val context = LocalContext.current
+    val viewModel: ProductViewModel = hiltViewModel()
 
     val uiState by viewModel.uiState.observeAsState()
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Home") }
+                title = { Text("Products") }
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { }) {
+            FloatingActionButton(onClick = { navController.navigate(route = RouteCart)}) {
                 Icon(Icons.Default.Add, contentDescription = "Add")
             }
         },
         floatingActionButtonPosition = FabPosition.End,
     ) { paddingValues ->
-        Column {
+        Column(
+            modifier = Modifier
+        ) {
             when (uiState) {
                 is UiState.Loading -> {
                     Box(
@@ -66,7 +72,8 @@ fun Home(modifier: Modifier = Modifier) {
                         modifier = Modifier.padding(paddingValues),
                         products = products,
                         onAddProductToCart = { productToAdd ->
-
+                            viewModel.addProductToCart(productToAdd)
+                            Toast.makeText(context, "Product was added to Cart !", Toast.LENGTH_SHORT).show()
                         }
                     )
                 }
