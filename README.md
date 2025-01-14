@@ -1,7 +1,10 @@
 Shopping Cart Application
+
 This is a Shopping Cart Application built using the MVVM architecture pattern in Android. The app features product listing, the ability to add products to a cart, and cart management (editing quantities and removing items). It uses Room Database for local storage and Retrofit for API calls. The app is fully implemented in Jetpack Compose.
 
+
 Features
+
 Product Listing: Displays a list of products fetched from a remote API.
 Add to Cart: Add products to the cart from the product listing screen.
 Cart Management: Edit the quantity of items or remove items from the cart.
@@ -68,11 +71,10 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/your-repo/shopping-cart.git
+git clone https://github.com/Supritraj5/E-commerce
 cd shopping-cart
 Open the project in Android Studio.
 
-Add your API endpoint in ApiService.kt.
 
 Run the application.
 
